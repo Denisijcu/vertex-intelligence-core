@@ -1,0 +1,29 @@
+# --- Core & AI Framework ---
+ollama                  # Comunicación con el motor Ollama
+langchain               # Orquestación de agentes y cadenas de pensamiento
+langchain-community     # Extensiones para herramientas externas
+python-jose[cryptography] # Manejo y forja de tokens JWT (Caso NexusAI) [cite: 88, 130]
+
+# --- Vector Database & RAG ---
+faiss-cpu               # Motor de búsqueda vectorial (Caso VertexBrain) [cite: 7, 17]
+sentence-transformers   # Generación de embeddings para los writeups
+chromadb                # Alternativa de base de datos vectorial local
+
+# --- Offensive Security Tools ---
+requests                # Peticiones HTTP para exploits y SSRF [cite: 140, 1140]
+scapy                   # Manipulación de paquetes de red a bajo nivel
+beautifulsoup4          # Scraping de sitios de CVEs y NVD
+python-nmap             # Integración de scripts de Nmap en Python [cite: 14, 1115]
+
+# --- Document Processing ---
+fpdf                    # Generación de PDFs maliciosos (Caso VertexBrain) [cite: 34]
+python-docx             # Lectura de writeups en formato .docx
+PyPDF2                  # Manipulación y análisis de archivos PDF
+
+# --- Utilities ---
+python-dotenv           # Manejo de variables de entorno y secrets
+tqdm                    # Barras de progreso para tareas largas
+colorama                # Terminal con colores para el reporte de VIC
+PyJWT                    # Manejo de tokens JWT (Caso NexusAI) [cite: 88, 130]
+flask                   # Framework web para la interfaz de VIC (opcional)
+python-dotenv

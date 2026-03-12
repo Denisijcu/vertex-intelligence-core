@@ -1,0 +1,9 @@
+{
+    "default_model": "llama3",
+    "specialized_models": {
+        "code_analysis": "codellama",
+        "quick_recon": "mistral",
+        "heavy_attack": "llama3:70b"
+    },
+    "temperature": 0.2
+}
