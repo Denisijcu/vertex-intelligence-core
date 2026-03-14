@@ -1,21 +1,23 @@
-import requests
+from dotenv import load_dotenv
+import os
+import anthropic
 
 class VIC_AI_Client:
-    def __init__(self, model="google/gemma-3-4b"):
+    def __init__(self, model="claude-sonnet-4-20250514"):
         self.model = model
-        self.url = "http://localhost:1234/api/v1/chat"
+        self.client = anthropic.Anthropic()  # usa ANTHROPIC_API_KEY del env
 
     def ask_ai(self, prompt, system_prompt="Eres un experto en ciberseguridad ofensiva."):
-        payload = {
-            "model": self.model,
-            "system_prompt": system_prompt,
-            "input": prompt
-        }
         try:
-            # Subimos el timeout a 90 para darle aire a Gemma
-            response = requests.post(self.url, json=payload, timeout=120)
-            res_json = response.json()
-            # IMPORTANTE: Verifica que esta ruta coincida con el JSON que viste en LM Studio
-            return res_json["output"][0]["content"]
+            message = self.client.messages.create(
+                model=self.model,
+                max_tokens=1024,
+                system=system_prompt,
+                messages=[
+                    {"role": "user", "content": prompt}
+                ]
+            )
+            return message.content[0].text
         except Exception as e:
-            return f"Error de conexión con IA: {e}"
+            return f"Error de conexión con Anthropic: {e}"
+        
